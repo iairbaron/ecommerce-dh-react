@@ -1,0 +1,36 @@
+.container{
+  margin: 7rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.title{
+  color: #fff;
+	font-size: 2rem;
+}
+
+.grid{
+  display: grid;
+	grid-template-columns: 50% 50%;
+	gap: 2rem;
+}
+
+.tableContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.buyButton{
+  background-color: #fff;
+  color: #000;
+  padding: 1rem;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 200px;
+	margin-top: 20px;
+}
