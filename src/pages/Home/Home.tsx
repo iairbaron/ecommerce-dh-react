@@ -4,7 +4,7 @@ import CardProduct from "../../components/ui/cardProduct/CardProduct";
 import { getProducts } from "../../service/products.service";
 import { Toaster } from "sonner";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 
 const Home = () => {
   const [page, setPage] = useState(1);
