@@ -12,6 +12,13 @@
 	z-index: 99999;
 }
 
+
+.emptyCartMessage {
+	font-size: 18px;
+	text-align: center;
+	margin-top: 20px;
+  }
+
 @media (min-width: 768px) {
 	.modalContainer {
 		min-height: 600px;

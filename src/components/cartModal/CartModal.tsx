@@ -3,6 +3,7 @@ import Close from "../../assets/close.svg";
 import { FC } from "react";
 import Table from "../ui/table/Table.tsx";
 import { useNavigate } from "react-router-dom";
+import useCartContext from "../../hooks/useCartContext.ts";
 
 interface Props {
   handleShowCartModal: () => void;
@@ -11,8 +12,13 @@ interface Props {
 const CartModal: FC<Props> = ({ handleShowCartModal }) => {
   const navigate = useNavigate();
 
+  const {
+    state: { cartItems },
+  } = useCartContext();
+
   const handleNavigate = () => {
-    handleShowCartModal()
+    console.log(cartItems.length);
+    handleShowCartModal();
 
     navigate("/checkout");
   };
@@ -22,12 +28,24 @@ const CartModal: FC<Props> = ({ handleShowCartModal }) => {
       <button onClick={handleShowCartModal} className={styles.modalCloseButton}>
         <img src={Close} alt="Close" />
       </button>
-      <Table />
-      <div>
-        <button onClick={handleNavigate} className={styles.modalButtonContainer}>Checkout</button>
-      </div>
+      {cartItems.length === 0 ? (
+        <div className={styles.emptyCartMessage}>Cart is empty</div>
+      ) : (
+        <>
+          <Table />
+          <div>
+            <button
+              onClick={handleNavigate}
+              className={styles.modalButtonContainer}
+            >
+              Checkout
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 };
+
 
 export default CartModal;

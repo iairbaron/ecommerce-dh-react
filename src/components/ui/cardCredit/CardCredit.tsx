@@ -5,6 +5,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import useCartContext from "../../../hooks/useCartContext";
 import { CartProduct } from "../../../interface";
+import { useNavigate } from "react-router-dom";
 
 const CardCredit = () => {
   const [cardData, setCardData] = useState({
@@ -14,6 +15,9 @@ const CardCredit = () => {
     cvc: "",
     focus: "",
   });
+
+  const navigate = useNavigate();
+
 
   const { dispatch } = useCartContext();
 
@@ -42,7 +46,12 @@ const CardCredit = () => {
     });
 
     dispatch({ type: "CLEAR_CART", payload: {} as CartProduct });
-  };
+
+    toast.success("Success! Thank you for your purchase.");
+
+setTimeout(() => {
+    navigate("/");
+  }, 2000); }
 
   return (
     <div className={styles.container}>
@@ -65,6 +74,7 @@ const CardCredit = () => {
             type="text"
             name="number"
             id="number"
+            inputMode="numeric"
           />
         </div>
         <div className={styles.formControl}>
