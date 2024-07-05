@@ -1,0 +1,20 @@
+.cardButton {
+	all: unset;
+	background-color: #EDB00F;
+	border-radius: 10px;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	font-size: 1rem;
+	font-weight: bold;
+	margin: 0 auto 0.5rem;
+	padding: 0.5rem 1rem;
+	text-align: center;
+	text-transform: uppercase;
+	transition: 0.5s ease-in-out;
+	width: 160px;
+}
+
+.cardButton:hover {
+	background-color: #edb20fa7;
+}

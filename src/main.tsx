@@ -7,6 +7,7 @@ import Home from "./pages/Home/Home.tsx";
 import { CartProvider } from "./context/CartProvider.tsx";
 import Checkout from "./pages/checkout/Checkout.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import ProductDetail from "./pages/product_detail/ProductDetail.tsx";
 
 const queryClient = new QueryClient();
 
@@ -17,6 +18,8 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "/checkout", element: <Checkout /> },
+      { path: "/product_detail", element: <ProductDetail /> },
+
     ],
   },
 ]);

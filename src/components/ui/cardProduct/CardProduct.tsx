@@ -1,15 +1,16 @@
 import { FC } from "react";
 import style from "./CardProduct.module.css";
 import { CartProduct, Product } from "../../../interface";
-import useCartContext from "../../../hooks/useCartContext";
-import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
+import { CardActionArea } from "@mui/material";
+import AddToCartButton from "../AddToCartButton/AddToCartButton";
 
 interface Props {
   product: Product;
 }
 
 export const CardProduct: FC<Props> = ({ product }) => {
-  const { dispatch } = useCartContext();
+  const navigate = useNavigate();
 
   const item: CartProduct = {
     id: product.id,
@@ -19,28 +20,37 @@ export const CardProduct: FC<Props> = ({ product }) => {
     quantity: 1,
   };
 
-  const addToCart = (item: CartProduct) => {
-    dispatch({ type: "ADD_TO_CART", payload: item });
-    toast.success("Product added to cart")
-
+  const handleProductDetail = () => {
+    navigate("/product_detail", { state: { product: item } });
   };
 
   return (
     <div className={style.cardContainer}>
-      <img className={style.cardImage} src={product.image} alt={product.name} />
-      <div className={style.cardDetail}>
-        <h3 className={style.cardTitle}>{product.name}</h3>
-        <div className={style.cardbody}>
-          <p className={style.cardType}>{product.type}</p>
-          <p className={style.cardPrice}>
-            {" "}
-            {product.price},<small>00</small>
-          </p>
+      <CardActionArea onClick={handleProductDetail}>
+        <img
+          style={{
+            margin: "2rem",
+            objectFit: "contain",
+            width: "110px",
+            maxHeight: "140px",
+            transform: "translateY(0%) translateX(50%)",
+            zIndex: 10000,
+          }}
+          src={product.image}
+          alt={product.name}
+        />
+        <div className={style.cardDetail}>
+          <h3 className={style.cardTitle}>{product.name}</h3>
+          <div className={style.cardbody}>
+            <p className={style.cardType}>{product.type}</p>
+            <p className={style.cardPrice}>
+              {" "}
+              {product.price},<small>00</small>
+            </p>
+          </div>
         </div>
-        <button onClick={() => addToCart(item)} className={style.cardButton}>
-          Add to cart
-        </button>
-      </div>
+      </CardActionArea>
+      <AddToCartButton productItem={item} />
     </div>
   );
 };
