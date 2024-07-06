@@ -1,8 +1,8 @@
-import Hero from "../../components/ui/Hero/Hero";
 import styles from "./Home.module.css";
-import CardProduct from "../../components/ui/CardProduct/CardProduct";
+import Hero from "../../components/ui/Hero/Hero";
 import { getProducts } from "../../service/products.service";
 import { Toaster } from "sonner";
+import CardProduct from "../../components/ui/CardProduct/CardProduct";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 

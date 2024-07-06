@@ -1,7 +1,8 @@
 import { Toaster } from "sonner";
 import CardCredit from "../../components/ui/CardCredit/CardCredit";
-import ProductsTable from "../../components/ui/Table/Table";
 import styles from "./Checkout.module.css";
+import ProductsTable from "../../components/ui/Table/Table";
+
 
 const Checkout = () => {
   return (
