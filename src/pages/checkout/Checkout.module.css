@@ -21,6 +21,16 @@
   justify-content: space-between;
 }
 
+@media (max-width: 769px) {
+  .grid{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+  }
+}
+
+
 .buyButton{
   background-color: #fff;
   color: #000;

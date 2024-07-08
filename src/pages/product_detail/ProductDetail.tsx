@@ -3,12 +3,14 @@ import { Product } from "../../interface";
 import { Toaster } from "sonner";
 import { useLocation } from "react-router-dom";
 import AddToCartButton from "../../components/ui/AddToCartButton/AddToCartButton";
+import { useMediaQuery } from "react-responsive";
 
 interface Props {
   product?: Product;
 }
 
 const ProductDetail: FC<Props> = () => {
+  const isMobile = useMediaQuery({ query: "(max-width: 500px)" });
   const location = useLocation();
   const { product } = location.state;
 
@@ -28,13 +30,15 @@ const ProductDetail: FC<Props> = () => {
         <div
           style={{
             display: "flex",
+            flexDirection: isMobile ? "column" : "row",
+            alignItems: "center",
             justifyContent: "space-around",
           }}
         >
           <div
             style={{
               backgroundColor: "white",
-              width: "40%",
+              width: isMobile ? "70vw" : "40%",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
@@ -45,7 +49,7 @@ const ProductDetail: FC<Props> = () => {
               style={{
                 margin: "2rem",
                 objectFit: "contain",
-                width: "70%",
+                width: isMobile ? "60%" : "70%",
                 maxHeight: "500px",
               }}
               src={product.image}
@@ -56,7 +60,9 @@ const ProductDetail: FC<Props> = () => {
             style={{
               display: "flex",
               flexDirection: "column",
-              width: "50%",
+              alignItems: "start",
+
+              width: isMobile ? "70%" : "50%",
             }}
           >
             <h1 style={{ fontSize: "2.25rem", fontWeight: "bold" }}>
@@ -80,7 +86,7 @@ const ProductDetail: FC<Props> = () => {
               repudiandae. Consectetur asperiores doloremque eum amet provident,
               dicta nobis deserunt, voluptatum officiis nisi omnis.lorem
             </p>
-            <div style={{marginTop:"30px"}}>
+            <div style={{ marginTop: "30px" }}>
               <AddToCartButton productItem={product} />
             </div>
           </div>
@@ -92,4 +98,28 @@ const ProductDetail: FC<Props> = () => {
 
 export default ProductDetail;
 
-
+// <div
+// style={{
+//   display: "flex",
+//   flexDirection: "column",
+//   alignItems:"start",
+//   justifyContent:"center",
+//   width: "70%",
+// }}
+// >
+// <h1 style={{ fontSize: "2.25rem", fontWeight: "bold" }}>
+//   {product.name}
+// </h1>
+// <p style={{ marginBottom: "1rem", fontWeight: "bold" }}>
+//   ${product.price}
+// </p>
+// <h1
+//   style={{
+//     fontSize: "1.5rem",
+//     fontWeight: "bold",
+//     marginBottom: "0.25rem",
+//     textAlign:"center"
+//   }}
+// >
+//   Descripcion:
+// </h1>

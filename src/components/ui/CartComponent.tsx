@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "../ui/navBar/navbar.module.css";
+import styles from "../ui/NavBar/navbar.module.css";
 import { useLocation } from "react-router-dom";
 import useCartContext from "../../hooks/useCartContext";
 import Cart from "../../assets/cart.svg";

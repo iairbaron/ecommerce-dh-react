@@ -27,18 +27,20 @@ export const CardProduct: FC<Props> = ({ product }) => {
   return (
     <div className={style.cardContainer}>
       <CardActionArea onClick={handleProductDetail}>
+      <div style={{display:"flex", justifyContent:"center"}}>
         <img
           style={{
             margin: "2rem",
             objectFit: "contain",
             width: "110px",
             maxHeight: "140px",
-            transform: "translateY(0%) translateX(50%)",
+            position:"relative",
             zIndex: 10000,
           }}
           src={product.image}
           alt={product.name}
         />
+        </div>
         <div className={style.cardDetail}>
           <h3 className={style.cardTitle}>{product.name}</h3>
           <div className={style.cardbody}>
