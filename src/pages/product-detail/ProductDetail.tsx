@@ -1,16 +1,11 @@
-import { FC } from "react";
-import { Product } from "../../interface";
 import { Toaster } from "sonner";
-import { useLocation } from "react-router-dom";
 import AddToCartButton from "../../components/ui/AddToCartButton/AddToCartButton";
 import { useMediaQuery } from "react-responsive";
+import { useLocation } from "react-router-dom";
 
-interface Props {
-  product?: Product;
-}
-
-const ProductDetail: FC<Props> = () => {
+const ProductDetail = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 500px)" });
+
   const location = useLocation();
   const { product } = location.state;
 
@@ -61,7 +56,6 @@ const ProductDetail: FC<Props> = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "start",
-
               width: isMobile ? "70%" : "50%",
             }}
           >
@@ -87,7 +81,7 @@ const ProductDetail: FC<Props> = () => {
               dicta nobis deserunt, voluptatum officiis nisi omnis.lorem
             </p>
             <div style={{ marginTop: "30px" }}>
-              <AddToCartButton productItem={product} />
+              <AddToCartButton productItem={{ ...product, quantity: 1 }} />
             </div>
           </div>
         </div>

@@ -1,10 +1,10 @@
+import { useState } from "react";
+import { Toaster } from "sonner";
 import styles from "./Home.module.css";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import Hero from "../../components/ui/Hero/Hero";
 import { getProducts } from "../../service/products.service";
-import { Toaster } from "sonner";
 import CardProduct from "../../components/ui/CardProduct/CardProduct";
-import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import { useState } from "react";
 
 const Home = () => {
   const [page, setPage] = useState(1);
@@ -17,14 +17,14 @@ const Home = () => {
 
   return (
     <>
-      <Hero />
+      <Hero/>
       <Toaster />
       {isLoading && <p>Loading ...</p>}
       {error && <p>Error getting the products</p>}
 
       <div className={styles.container}>
         {data?.map((product) => (
-          <CardProduct key={product.tail} product={product} />
+          <CardProduct key={product.id} product={product} />
         ))}
       </div>
       <div className={styles.paginationContainer}>

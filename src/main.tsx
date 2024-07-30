@@ -3,11 +3,11 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { LayoutMain } from "./components/Layout/LayoutMain.tsx";
-import Home from "./pages/Home/Home.tsx";
+import Home from "./pages/home/Home.tsx";
 import { CartProvider } from "./context/CartProvider.tsx";
 import Checkout from "./pages/checkout/Checkout.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import ProductDetail from "./pages/product_detail/ProductDetail.tsx";
+import ProductDetail from "./pages/product-detail/ProductDetail.tsx";
 
 const queryClient = new QueryClient();
 

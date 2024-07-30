@@ -9,7 +9,7 @@ export const initialState: CartState = {
 };
 
 export interface CartAction {
-  type: "ADD_TO_CART" | "REMOVE_FROM_CART"|"CLEAR_CART" ;
+  type: "ADD_TO_CART" | "REMOVE_FROM_CART" | "CLEAR_CART";
   payload: CartProduct;
 }
 export const cartReducer = (
@@ -20,13 +20,16 @@ export const cartReducer = (
     case "ADD_TO_CART": {
       const { id } = action.payload;
       const existingItem = state.cartItems.find((item) => item.id === id);
-          
+
       if (existingItem) {
         return {
           ...state,
           cartItems: state.cartItems.map((item) =>
             item.id === id
-              ? { ...existingItem, quantity: existingItem.quantity + 1 }
+              ? {
+                  ...existingItem,
+                  quantity: existingItem.quantity + action.payload.quantity,
+                }
               : item
           ),
         };
@@ -48,7 +51,9 @@ export const cartReducer = (
         if (itemToRemove.quantity === 1) {
           return {
             ...state,
-            cartItems: state.cartItems.filter((item) => item.id !== removeItemID),
+            cartItems: state.cartItems.filter(
+              (item) => item.id !== removeItemID
+            ),
           };
         } else {
           return {
@@ -61,15 +66,13 @@ export const cartReducer = (
           };
         }
       }
-      return state
+      return state;
     }
-    case "CLEAR_CART":{
-      return{
+    case "CLEAR_CART": {
+      return {
         ...state,
-        cartItems:[]
-
-      }
-
+        cartItems: [],
+      };
     }
     default:
       return state;

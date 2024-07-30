@@ -8,7 +8,7 @@ import { CartProduct } from "../../../interface";
 import { useNavigate } from "react-router-dom";
 import { validateName, validateNumberAndLength } from "../../../hooks/validator";
 
-const CardCredit = () => {
+const CreditCard = () => {
   const [cardData, setCardData] = useState({
     number: "",
     name: "",
@@ -185,4 +185,4 @@ const CardCredit = () => {
   );
 };
 
-export default CardCredit;
+export default CreditCard;

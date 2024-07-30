@@ -1,11 +1,9 @@
 import useCartContext from "../../../hooks/useCartContext";
-import styles from "./table.module.css" ;
+import styles from "./table.module.css";
 import { CartProduct } from "../../../interface";
-
-
+import { useMemo } from "react";
 
 export const ProductsTable = () => {
-
   const {
     state: { cartItems },
   } = useCartContext();
@@ -20,13 +18,11 @@ export const ProductsTable = () => {
     dispatch({ type: "REMOVE_FROM_CART", payload: item });
   };
 
-  const totalPay = ()=>{
-    const total = cartItems.reduce((acc, item)=> {
-      return  acc + item.price  * item.quantity; 
-    }, 0 )
-    return total ;
-  }
-
+  const totalPay = useMemo(() => {
+    return cartItems.reduce((acc, item) => {
+      return acc + item.price * item.quantity;
+    }, 0);
+  }, [cartItems]);
 
   return (
     <>
@@ -68,7 +64,7 @@ export const ProductsTable = () => {
         </tbody>
       </table>
       <div className={styles.modalTotalContainer}>
-        <h3>total: ${totalPay()}</h3>
+        <h3>total: ${totalPay}</h3>
       </div>
     </>
   );
